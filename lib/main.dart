@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter02/routes/RoutesConfig.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(TestApp());
+}
+// TODO 怎么可以继承父类的所有属性
+class TestApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        initialRoute: "/", //RoutesConfig.PAGE_ONE
+        routes: RoutesConfig.routes(context),
+        home: const MyHomePage(title: 'Home')
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -50,7 +63,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -106,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){_incrementCounter;     Navigator.of(context).pushNamed(RoutesConfig.PAGE_ONE, arguments: "主页");
+      },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
