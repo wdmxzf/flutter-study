@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter02/page/ThreeStatePage.dart';
 import 'package:flutter02/routes/RoutesConfig.dart';
+import 'package:flutter02/util/SPUtil.dart';
 
 /**
  * 有状态组件
@@ -49,7 +50,8 @@ class ThreeStateWidget extends State<ThreeStatePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text("接收参数:"),
-            Text(msg.toString()),
+            Text(msg.toString()+"++"+SPUtil.getInstant().getValue("test")
+            ),
             CupertinoButton(
                 child: const Text("上一页"),
                 onPressed: () {

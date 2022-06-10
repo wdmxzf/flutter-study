@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter02/routes/RoutesConfig.dart';
+import 'package:flutter02/util/SPUtil.dart';
 
 class TwoPage extends StatelessWidget{
   final String msg;
@@ -29,6 +30,7 @@ class TwoPage extends StatelessWidget{
             const Text("下页返回的数据::"),
             Text(result.toString()),
             CupertinoButton(child: const Text("下一页"), onPressed: (){
+              SPUtil.getInstant().save("test", "哈哈哈");
               Navigator.pushNamed(context, RoutesConfig.PAGE_THREE, arguments: "我从第二页来").then((value) => result = value);
             }),
             const Text("arguments"),
@@ -38,5 +40,4 @@ class TwoPage extends StatelessWidget{
       ),
     );
   }
-  
 }
