@@ -62,7 +62,7 @@ class ThreeStateWidget extends State<ThreeStatePage> {
             CupertinoButton(
                 child: const Text("下一页"),
                 onPressed: () {
-                  Navigator.pushNamed(context, RoutesConfig.PAGE_ONE,
+                  Navigator.pushNamed(context, RoutesConfig.PAGE_FOUR,
                           arguments: "我从第三页来")
                       .then((value) {
                     setState(() {
