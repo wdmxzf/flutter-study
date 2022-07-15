@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter02/page/TwoPage.dart';
+import 'package:flutter02/routes/AppChannel.dart';
 
 class OnePage extends StatelessWidget{
 
@@ -23,11 +24,15 @@ class OnePage extends StatelessWidget{
               Navigator.pop(context,"我从第一页来");
             }),
             CupertinoButton(child: const Text("下一页"), onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context){return TwoPage(msg:"我从第一页来");})).then((value){
-                result = value;
-                print("---------------------1");
-                print(result);
-                print("---------------------2");});
+              Map param = new Map();
+              param.putIfAbsent("title", () => "我从Flutter第一页来");
+              AppChannel.gotoPage("OnePage", param);// TODO 跳转到原生
+
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context){return TwoPage(msg:"我从第一页来");})).then((value){
+              //   result = value;
+              //   print("---------------------1");
+              //   print(result);
+              //   print("---------------------2");});
             }),
             Text("下页来的参数"),
             Text(result.toString()),
